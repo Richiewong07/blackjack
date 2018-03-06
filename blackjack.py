@@ -40,6 +40,6 @@ class Deck():
         single_card = self.deck.pop()
         return single_card
 
-# test_deck = Deck()
-# test_deck.shuffle()
-# print(test_deck)
+test_deck = Deck()
+test_deck.shuffle()
+print(test_deck)
