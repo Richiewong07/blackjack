@@ -40,6 +40,60 @@ class Deck():
         single_card = self.deck.pop()
         return single_card
 
-test_deck = Deck()
-test_deck.shuffle()
-print(test_deck)
+# test_deck = Deck()
+# test_deck.shuffle()
+# print(test_deck)
+
+class Hand():
+
+    def __init__(self):
+        self.cards = []
+        self.value = 0
+        self.aces = 0
+
+    def add_card(self, card):
+
+        # card passed in from Deck.deal() --> single Card(suit, rank)
+        self.cards.append(card)
+        self.value += values[card.rank]
+
+        # track aces
+        if card.rank == 'Ace':
+            self.aces += 1
+
+        def adjust_for_aces(self):
+
+            # if total value > 21 and I still have an ace
+            # then change my ace to be a 1 instead of an 11
+            while self.value > 21 and self.aces > 0:
+                self.value -= 10
+                self.aces -= 1
+
+
+class Chips:
+
+    def __init__(self, total = 100):
+        self.total = total
+        self.bet = 0
+
+    def win_bet(self):
+        self.total += self.win_bet
+
+    def lose_bet(self):
+        self.total -= self.bet
+
+
+# test_deck = Deck()
+# test_deck.shuffle()
+#
+# # Player
+# test_player = Hand()
+#
+# # Deal 1 card from the deck CARD(suit, rank)
+# pulled_card = test_deck.deal()
+# print(pulled_card)
+# test_player.add_card(pulled_card)
+# print(test_player.value)
+#
+# test_player.add_card(test_deck.deal())
+# print(test_player.value)
