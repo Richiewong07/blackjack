@@ -151,17 +151,17 @@ def push(player, dealer):
 
 
 
-test_deck = Deck()
-test_deck.shuffle()
-
-# Player
-test_player = Hand()
-
-# Deal 1 card from the deck CARD(suit, rank)
-pulled_card = test_deck.deal()
-print(pulled_card)
-test_player.add_card(pulled_card)
-print(test_player.value)
-
-test_player.add_card(test_deck.deal())
-print(test_player.value)
+# test_deck = Deck()
+# test_deck.shuffle()
+#
+# # Player
+# test_player = Hand()
+#
+# # Deal 1 card from the deck CARD(suit, rank)
+# pulled_card = test_deck.deal()
+# print(pulled_card)
+# test_player.add_card(pulled_card)
+# print(test_player.value)
+#
+# test_player.add_card(test_deck.deal())
+# print(test_player.value)
