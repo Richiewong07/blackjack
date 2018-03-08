@@ -101,7 +101,7 @@ def take_bet(chips):
 
 def hit(deck, hand):
 
-    single_card = deak.deal()
+    single_card = deck.deal()
     hand.add_card(single_card)
     hand.adjust_for_aces()
 
@@ -121,7 +121,7 @@ def hit_or_stand(deck, hand):
 
         else:
             print('Sorry, I did not understand that, Please enter h or s only!')
-            
+
         break
 
 
@@ -151,17 +151,17 @@ def push(player, dealer):
 
 
 
-# test_deck = Deck()
-# test_deck.shuffle()
-#
-# # Player
-# test_player = Hand()
-#
-# # Deal 1 card from the deck CARD(suit, rank)
-# pulled_card = test_deck.deal()
-# print(pulled_card)
-# test_player.add_card(pulled_card)
-# print(test_player.value)
-#
-# test_player.add_card(test_deck.deal())
-# print(test_player.value)
+test_deck = Deck()
+test_deck.shuffle()
+
+# Player
+test_player = Hand()
+
+# Deal 1 card from the deck CARD(suit, rank)
+pulled_card = test_deck.deal()
+print(pulled_card)
+test_player.add_card(pulled_card)
+print(test_player.value)
+
+test_player.add_card(test_deck.deal())
+print(test_player.value)
