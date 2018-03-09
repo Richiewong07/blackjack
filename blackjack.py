@@ -10,7 +10,6 @@ playing = True
 
 
 class Card():
-
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
@@ -20,7 +19,6 @@ class Card():
 
 
 class Deck():
-
     def __init__(self):
         self.deck = []
         for suit in suits:
@@ -45,24 +43,20 @@ class Deck():
 # print(test_deck)
 
 class Hand():
-
     def __init__(self):
         self.cards = []
         self.value = 0
         self.aces = 0
 
     def add_card(self, card):
-
         # card passed in from Deck.deal() --> single Card(suit, rank)
         self.cards.append(card)
         self.value += values[card.rank]
-
         # track aces
         if card.rank == 'Ace':
             self.aces += 1
 
         def adjust_for_aces(self):
-
             # if total value > 21 and I still have an ace
             # then change my ace to be a 1 instead of an 11
             while self.value > 21 and self.aces > 0:
@@ -85,11 +79,9 @@ class Chips:
 
 
 def take_bet(chips):
-
     while True:
-
         try:
-            chips.bet = int(input('How many chips would you like to bet?'))
+            chips.bet = int(input('How many chips would you like to bet? ')) # from self.bet in Chips class
         except:
             print('Sorry please provide an integer')
         else:
@@ -100,28 +92,24 @@ def take_bet(chips):
 
 
 def hit(deck, hand):
-
     single_card = deck.deal()
     hand.add_card(single_card)
     hand.adjust_for_aces()
 
 
 def hit_or_stand(deck, hand):
-    global playing
+    global playing # to control an upcoming while loop
 
     while True:
         x = input('Hit or Stand? Enter h or s')
 
         if x[0].lower() == 'h':
             hit(deck, hand)
-
         elif x[0].lower() == 's':
             print ("Player Stands Dealer's Turn")
             playing = False
-
         else:
             print('Sorry, I did not understand that, Please enter h or s only!')
-
         break
 
 
@@ -147,6 +135,53 @@ def dealer_wins(player, dealer, chips):
 
 def push(player, dealer):
     print('Dealer and player tie! PUSH')
+
+
+
+while True:
+    # Print an opening statement
+    print('WELCOME TO BLACKJACK')
+
+    # Create & shuffle the deck, deal two cards to each player
+    deck = Deck()
+    deck.shuffle()
+
+    player_hand = Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+
+    dealer_hand = Hand()
+    dealer_hand.add_card(deck.deal())
+    dealer_hand.add_card(deck.deal())
+
+    # Set up Player's chips
+    player_chips = Chips()
+
+    # Prompt the Play for their bet
+    take_bet(player_chips)
+
+    # Show cards (but keep one deal card hidden)
+    show_some(player_hand, dealer_hand)
+
+
+    while playing: # recall this variable from our hit_or_stand function
+
+        # Prompt for Player to Hit or Stand
+        hit_or_stand(deck, player_hand)
+
+        # Show cards (but keep one dealer card hidden)
+        show_some(player_hand, dealer_hand)
+
+        # If player's had exceeds 21, run player_busts() and break out of loop
+        if player_hand.value > 21:
+            player_busts(player_hand, dealer_hand, player_chips):
+
+    # If player hasn't busted, play Dealer's hand until Dealer reaches 17
+
+        # Show all cards
+
+        # Run different winning scenarios
+
 
 
 
